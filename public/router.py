@@ -65,8 +65,10 @@ redirectTo = ""
 for redirection in config["redirections"]:
     cre = re.compile(redirection["src"])
     mre = cre.match(fullRequest)
-    redirectTo = redirection["dest"]
-    break
+    
+    if mre:
+       redirectTo = redirection["dest"]
+       break
 
 # Perform redirection if not in debug mode
 
